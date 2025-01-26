@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro/Contra Sarzbüttler Revolution</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            color: #333;
+        }
+        .question {
+            margin-bottom: 20px;
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .question p {
+            margin: 0;
+        }
+        button {
+            display: block;
+            margin: 20px 0;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #333;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        .result {
+            display: none;
+            font-weight: bold;
+            margin-top: 20px;
+            padding: 15px;
+            background: #e7ffe7;
+            border: 1px solid #5cb85c;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pro/Contra Test: Sarzbüttler Revolution</h1>
+    <p>Beantworte die folgenden 30 Fragen, um herauszufinden, ob du die Revolution unterstützt.</p>
+    <form id="quiz">
+        <!-- Fragen-Block -->
+        <div class="question">
+            <p>1. Soll die Meierei verstaatlicht werden?</p>
+            <label><input type="radio" name="q1" value="pro"> Ja</label><br>
+            <label><input type="radio" name="q1" value="neutral"> Neutral</label><br>
+            <label><input type="radio" name="q1" value="contra"> Nein</label>
+        </div>
+        <div class="question">
+            <p>2. Soll eine zentrale Führung langfristig Entscheidungen treffen?</p>
+            <label><input type="radio" name="q2" value="pro"> Ja</label><br>
+            <label><input type="radio" name="q2" value="neutral"> Neutral</label><br>
+            <label><input type="radio" name="q2" value="contra"> Nein</label>
+        </div>
+        <!-- Wiederhole dies bis zu 30 Fragen -->
+        <div class="question">
+            <p>3. Unterstützt du eine höhere Besteuerung von Reichtum?</p>
+            <label><input type="radio" name="q3" value="pro"> Ja</label><br>
+            <label><input type="radio" name="q3" value="neutral"> Neutral</label><br>
+            <label><input type="radio" name="q3" value="contra"> Nein</label>
+        </div>
+        <!-- Füge die restlichen Fragen bis q30 hinzu -->
+        <div class="question">
+            <p>30. Soll Sarzbüttel unabhängiger von nationalen politischen Entscheidungen werden?</p>
+            <label><input type="radio" name="q30" value="pro"> Ja</label><br>
+            <label><input type="radio" name="q30" value="neutral"> Neutral</label><br>
+            <label><input type="radio" name="q30" value="contra"> Nein</label>
+        </div>
+        <button type="button" onclick="calculateResult()">Ergebnis anzeigen</button>
+    </form>
+    <div class="result" id="result"></div>
+    <script>
+        function calculateResult() {
+            let scores = { pro: 0, neutral: 0, contra: 0 };
+            const answers = document.querySelectorAll('input[type="radio"]:checked');
+            answers.forEach(answer => scores[answer.value]++);
+            const result = document.getElementById('result');
+            if (scores.pro > scores.contra) {
+                result.textContent = "Dein Ergebnis: Pro-Revolution! Du unterstützt die Sarzbüttler Vision.";
+                result.style.backgroundColor = "#e7ffe7";
+                result.style.borderColor = "#5cb85c";
+            } else if (scores.contra > scores.pro) {
+                result.textContent = "Dein Ergebnis: Kontra-Revolution! Du bist gegen die Veränderungen.";
+                result.style.backgroundColor = "#ffe7e7";
+                result.style.borderColor = "#d9534f";
+            } else {
+                result.textContent = "Dein Ergebnis: Neutral. Du bist unschlüssig.";
+                result.style.backgroundColor = "#fff3cd";
+                result.style.borderColor = "#ffeeba";
+            }
+            result.style.display = "block";
+        }
+    </script>
+</body>
+</html>
